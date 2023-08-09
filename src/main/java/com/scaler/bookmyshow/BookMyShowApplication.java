@@ -18,6 +18,12 @@ public class BookMyShowApplication implements CommandLineRunner {
         this.userController = userController;
     }
 
+    public static void main(String[] args) {
+        SpringApplication.run(BookMyShowApplication.class, args);
+//
+//        UserController userController = new UserController();
+    }
+
     @Override
     public void run(String... args) throws Exception {
         System.out.println("Hello");
@@ -27,12 +33,6 @@ public class BookMyShowApplication implements CommandLineRunner {
         request.setPassword("password");
 
         userController.signUpUser(request);
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(BookMyShowApplication.class, args);
-//
-//        UserController userController = new UserController();
     }
 
 }

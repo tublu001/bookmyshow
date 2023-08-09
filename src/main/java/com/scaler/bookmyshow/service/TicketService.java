@@ -87,7 +87,7 @@ public class TicketService {
     public List<ShowSeat> getAndLokcShowSeats(List<Seat> seats, Optional<Show> showOptional) throws SeatNotAvailableException {
         List<ShowSeat> showSeats = showSeatRepository.findAllBySeatInAndShow(seats, showOptional.get());
 
-        for (ShowSeat showSeat: showSeats) {
+        for (ShowSeat showSeat : showSeats) {
             if (!(showSeat.getStatus().equals(ShowSeatStatus.AVAILABLE) || (
                     showSeat.getStatus().equals(ShowSeatStatus.LOCKED)))) { // && new Date( - showSeat.getLockedAt())))) {
                 throw new SeatNotAvailableException();
@@ -96,7 +96,7 @@ public class TicketService {
 
         List<ShowSeat> savedShowSeats = new ArrayList<>();
 
-        for (ShowSeat showSeat: showSeats) {
+        for (ShowSeat showSeat : showSeats) {
             showSeat.setStatus(ShowSeatStatus.LOCKED);
             showSeat.setLockedAt(new Date());
             savedShowSeats.add(showSeatRepository.save(showSeat));
